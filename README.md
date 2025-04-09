@@ -1,23 +1,10 @@
-# **Secure SSH Server Deployment on Fly.io**
+# **Secure Server Deployment on Fly.io**
 
-This guide outlines the steps to deploy a secure SSH server on Fly.io with persistent configuration for enhanced reliability.
-
----
-
-## 🚀 **Prerequisites**
-Before you begin, ensure you have:
-
-✅ A registered Fly.io account  
-✅ Fly.io CLI installed (`flyctl`)  
-✅ An SSH client (e.g., OpenSSH, MobaXterm)  
-✅ A public SSH key (`~/.ssh/id_ed25519.pub`)  
-
----
+This server auto installed *Python3.11 + NodeJS 22.14.0 + PHP8.2.28*
 
 ## 🔧 **Deployment Steps**
 
-### **1. Clone the repository**
-Run the following command:
+### **1. Clone the repository
 
 ```bash
 git clone https://github.com/robprian/robprian-fly.git
@@ -26,36 +13,25 @@ cd robprian-fly
 
 ---
 
-### **2. Create New Application**
-Create new Application name `robprian-fly` to Fly.io with:
+### **2. Configure fly.toml
 
 ```bash
-fly apps create robprian-fly
+app = 'robprian-fly' # change with your project name
+primary_region = 'cdg' #change with region you need i.e iad,lax,sin
 ```
 
 ---
 
-### **3. Deploy the Application**
-Deploy your server to Fly.io with:
+### **3. Deploy to Fly.io
 
 ```bash
-fly deploy --strategy immediate --remote-only --detach
+fly launch
 ```
-
----
-
-## 🔐 **Connect to Your SSH Server**
-
-### **Standard Port (Recommended)**
-```bash
-ssh -p 2222 robprian@robprian-fly.fly.dev
 ```
-
-### **Alternative Port**
-```bash
-ssh -p 2222 robprian@YOUR_IPV4_ADDRESS
+type y  
+type N  
+type y
 ```
-
 ---
 
 ## 🛠️ **Troubleshooting**
@@ -67,31 +43,10 @@ fly logs -a robprian-fly
 
 ---
 
-### **Repair or Recreate Volume**
-If volume issues arise:
 
-1. List volumes:
-   ```bash
-   fly volumes list -a robprian-fly
-   ```
+## 📝 **Notes**
+✅ Port 2222  
+✅ SSH command : ssh -p 2222 robprian@your-ip-address  
+✅ Extend volume : fly vol extend volume_xxxx --size 10gb  
 
-2. Delete the problematic volume:
-   ```bash
-   fly volumes delete <volume-id> -a robprian-fly --yes
-   ```
-
-3. Recreate the volume:
-   ```bash
-   fly volumes create robprian -a robprian-fly --size 1 --region cdg
-   ```
-
----
-
-### **Force Re-deploy**
-```bash
-fly deploy --strategy immediate --remote-only --detach
-```
-
---- 
-
-If you encounter issues or have questions, feel free to ask! 🚀
+If you encounter issues or have questions, feel free to ask! 🚀  
