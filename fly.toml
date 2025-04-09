@@ -1,0 +1,22 @@
+app = 'robprian-fly'
+primary_region = 'cgd'
+
+[build]
+  dockerfile = 'Dockerfile'
+
+[[mounts]]
+  source = 'robprian'
+  destination = '/robprian'
+  initial_size = '10gb'
+
+[[services]]
+  protocol = 'tcp'
+  internal_port = 2222
+
+  [[services.ports]]
+    port = 2222
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
