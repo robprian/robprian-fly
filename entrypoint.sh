@@ -19,22 +19,24 @@ EOF
 fi
 
 ##################
-cat << 'EOF' >> /robprian/.bashrc
+cat << 'EOF' >> ~/.bashrc
 
-# Custom Prompt for robprian-fly with screen name
+# Prompt with screen name and fixed hostname
 get_screen_name() {
     if [ -n "$STY" ]; then
         echo "${STY#*.}"
     fi
 }
 
+# Set prompt format
 if [ -n "$STY" ]; then
-    export PS1='[\[\e[0;32m\]robprian-fly\[\e[0m\]][\[\e[0;33m\]$(get_screen_name)\[\e[0m\]] \u@\h:\w\$ '
+    PS1='[\[\e[0;33m\]$(get_screen_name)\[\e[0m\]] \u@\h:\w\$ '
 else
-    export PS1='[\[\e[0;32m\]robprian-fly\[\e[0m\]] \u@\h:\w\$ '
+    PS1='\u@\h:\w\$ '
 fi
 
 EOF
+
 ###################
 
 chown -R robprian:robprian /robprian
