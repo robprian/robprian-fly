@@ -9,14 +9,13 @@ primary_region = 'hkg'
   destination = '/ghazi'
   initial_size = '5gb'
   auto_extend = true
-
+  
 [[services]]
   protocol = 'tcp'
   internal_port = 2222
 
   [[services.ports]]
     port = 2222
-    handlers = ["tls", "tcp"]  # optional, tergantung kebutuhan
 
 [[vm]]
   memory = '4gb'
