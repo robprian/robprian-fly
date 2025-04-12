@@ -18,8 +18,24 @@ alias ll="ls -lah"
 EOF
 fi
 
-# Tambahkan custom prompt untuk robprian
-echo 'export PS1="\[\e[32m\][robprian-fly] \[\e[36m\]\u@\h:\w\$ \[\e[m\]"' >> /robprian/.bashrc
+cat << 'EOF' >> /robprian/.bashrc
+
+# Custom Prompt for robprian-fly
+get_screen_name() {
+    if [ -n "$STY" ]; then
+        echo "${STY#*.}"
+    else
+        echo "no-screen"
+    fi
+}
+
+if [ -n "$STY" ]; then
+    PS1='[\e[0;32mrobprian-fly\e[0m][\e[0;33m$(get_screen_name)\e[0m] \u@\h:\w\$ '
+else
+    PS1='[\e[0;32mrobprian-fly\e[0m] \u@\h:\w\$ '
+fi
+
+EOF
 
 chown -R robprian:robprian /robprian
 
