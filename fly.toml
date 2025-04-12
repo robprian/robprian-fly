@@ -1,13 +1,14 @@
-app = 'robprian-fly'
+app = 'robprian'
 primary_region = 'hkg'
 
 [build]
   dockerfile = 'Dockerfile'
 
 [[mounts]]
-  source = 'robprian'
-  destination = '/robprian'
-  initial_size = '10gb'
+  source = 'ghazi'
+  destination = '/ghazi'
+  initial_size = '5gb'
+  auto_extend = true
 
 [[services]]
   protocol = 'tcp'
@@ -15,7 +16,7 @@ primary_region = 'hkg'
 
   [[services.ports]]
     port = 2222
-    handlers = ["tcp"]
+    handlers = ["tls", "tcp"]  # optional, tergantung kebutuhan
 
 [[vm]]
   memory = '4gb'
@@ -23,4 +24,4 @@ primary_region = 'hkg'
   cpus = 4
 
 [experimental]
-  entrypoint = ["bash", "-c", "hostname robprian-fly && exec /entrypoint.sh"]
+  entrypoint = ["bash", "-c", "hostname robprian && exec /entrypoint.sh"]
