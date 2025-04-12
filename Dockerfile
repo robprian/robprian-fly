@@ -41,7 +41,7 @@ RUN rm -f /etc/ssh/ssh_host_* && \
 # Buat user robprian
 RUN mkdir -p /robprian && \
     useradd -m -s /bin/bash -d /robprian robprian && \
-    echo "robprian:P4ks1m1n" | chpasswd && \
+    echo "robprian:passwordmu" | chpasswd && \
     usermod -aG sudo robprian && \
     echo "robprian ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
     chown -R robprian:robprian /robprian
