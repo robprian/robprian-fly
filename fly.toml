@@ -1,5 +1,5 @@
 app = 'robprian-fly'
-primary_region = 'cgd'
+primary_region = 'hkg'
 
 [build]
   dockerfile = 'Dockerfile'
