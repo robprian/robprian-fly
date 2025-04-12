@@ -4,7 +4,7 @@ LABEL maintainer="robprian@gmail.com"
 LABEL org.opencontainers.image.source="https://github.com/robprian/robprian-fly"
 
 # ARG untuk password
-ARG USER_PASSWORD=P4ks1m1n
+ARG USER_PASSWORD=ISI_DENGAN_PASSWORDMU
 
 RUN apt-get update && apt-get install -y \
     build-essential software-properties-common \
