@@ -2,8 +2,8 @@
 set -e
 
 # Path user
-USER_HOME="/robprian"
-USER_NAME="robprian"
+USER_HOME="/ghazi"
+USER_NAME="ghazi"
 
 # Generate folder volume & beri permission
 mkdir -p "$USER_HOME"
