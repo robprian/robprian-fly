@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js 22.1.0
-RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
     apt-get install -y nodejs && \
     node -v
 
