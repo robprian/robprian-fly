@@ -27,8 +27,6 @@ if ! grep -q "get_screen_name" "$USER_HOME/.bashrc" 2>/dev/null; then
 get_screen_name() {
     if [ -n "\$STY" ]; then
         echo "\${STY#*.}"
-    else
-        echo "no-screen"
     fi
 }
 
